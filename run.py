@@ -62,19 +62,8 @@ airtablefetcher = airtable_fetcher.AirtableFetcher(userkey)
 
 tools_records = airtablefetcher.fetch_records(basekey_giving_researchers_shared, tools_sample)
 
-
-theories_table = at.Airtable(basekey_giving_researchers_shared, theories, api_key=userkey)
-theories_records = theories_table.get_all(fields=['Theory'])
-
-papers_table = at.Airtable(basekey_giving_researchers_shared, papers, api_key=userkey)
-papers_records = papers_table.get_all(fields=['Authors', 'Title', 'Journal', 'Year', 'Pages', 'URL'])
-
-ftse_table = at.Airtable(basekey_giving_impact, ftse, api_key=userkey)
-ftse_records = ftse_table.get_all()
-
-experiments_table = at.Airtable(basekey_giving_researchers_shared, experiments, api_key=userkey)
-experiments_records = experiments_table.get_all()
-
+theories_table = airtablefetcher.fetch_table(basekey_giving_researchers_shared, theories)
+theories_records = airtablefetcher.fetch_records(basekey_giving_researchers_shared, theories, ['Theory'])
 
 """
 Initialize the wiki object
