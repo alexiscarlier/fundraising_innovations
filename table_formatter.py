@@ -1,6 +1,6 @@
 class TableFormatter(object):
 
-    def __init_(self):
+    def __init__(self):
         self.new_page = None
 
 

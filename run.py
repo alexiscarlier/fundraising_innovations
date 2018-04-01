@@ -1,3 +1,7 @@
+# NOTES
+
+# Should add a requirements file which install all the dependencies
+
 import dokuwiki
 import airtable as at
 import os
@@ -12,6 +16,7 @@ import getpass
 # THE CLASSES I'M IMPORTING
 
 import table_formatter
+import airtable_fetcher
 
 # THIS RUNS TO STORE PASSWORD AND USERKEY AS ENV VARIABLES
 
@@ -53,8 +58,10 @@ experiments = "Charity experiments"
 Fetch the relevant tables from Airtable
 """
 
-tools_table = at.Airtable(basekey_giving_researchers_shared, tools_sample, api_key=userkey)
-tools_records = tools_table.get_all()
+airtablefetcher = airtable_fetcher.AirtableFetcher(userkey)
+
+tools_records = airtablefetcher.fetch_records(basekey_giving_researchers_shared, tools_sample)
+
 
 theories_table = at.Airtable(basekey_giving_researchers_shared, theories, api_key=userkey)
 theories_records = theories_table.get_all(fields=['Theory'])
