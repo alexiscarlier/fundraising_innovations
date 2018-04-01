@@ -60,10 +60,12 @@ Fetch the relevant tables from Airtable
 
 airtablefetcher = airtable_fetcher.AirtableFetcher(userkey)
 
-tools_records = airtablefetcher.fetch_records(basekey_giving_researchers_shared, tools_sample)
+tools_dict = airtablefetcher.fetch_table_and_records(basekey_giving_researchers_shared, tools_sample)
+tools_records = tools_dict['records']
 
-theories_table = airtablefetcher.fetch_table(basekey_giving_researchers_shared, theories)
-theories_records = airtablefetcher.fetch_records(basekey_giving_researchers_shared, theories, ['Theory'])
+theories_dict = airtablefetcher.fetch_table_and_records(basekey_giving_researchers_shared, theories, ['Theory'])
+theories_table = theories_dict['table']
+theories_records = theories_dict['records']
 
 """
 Initialize the wiki object
